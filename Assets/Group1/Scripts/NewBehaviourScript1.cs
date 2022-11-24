@@ -3,7 +3,7 @@ using System.Collections;
 
 public class NewBehaviourScript1 : MonoBehaviour
 {
-    public float spEed;
+    public float _speed;
     public bool timer;
     public float time;
     // Use this for initialization
@@ -20,7 +20,7 @@ public class NewBehaviourScript1 : MonoBehaviour
             if(time < 0)
    {
                 timer = false;
-                spEed /= 2;
+                _speed /= 2;
             }
         }
 
@@ -33,16 +33,16 @@ public class NewBehaviourScript1 : MonoBehaviour
         }
 
         if (Input.GetKey(KeyCode.W))
-            transform.Translate(0, spEed * Time.deltaTime, 0);
+            transform.Translate(0, _speed * Time.deltaTime, 0);
 
         if (Input.GetKey(KeyCode.S))
-            transform.Translate(0, -spEed * Time.deltaTime, 0);
+            transform.Translate(0, -_speed * Time.deltaTime, 0);
 
         if (Input.GetKey(KeyCode.A))
-            transform.Translate(-spEed * Time.deltaTime, 0, 0);
+            transform.Translate(-_speed * Time.deltaTime, 0, 0);
 
         if (Input.GetKey(KeyCode.D))
-            transform.Translate(spEed * Time.deltaTime, 0, 0);
+            transform.Translate(_speed * Time.deltaTime, 0, 0);
     }
 
     public void SendMEssage(GameObject b)
@@ -54,7 +54,7 @@ public class NewBehaviourScript1 : MonoBehaviour
             Destroy(b);
         }if(b.name == "speed")
         {
-            spEed *= 2;
+            _speed *= 2;
             timer = true;
             time = 2;
 
