@@ -4,7 +4,9 @@ public class Enemy : MonoBehaviour
 {
     private Vector3 _target;
     private float _speed = 2f;
-    private float _maxTravetDistanse=4f;
+    private float _maxTravetDistanse = 4f;
+
+    public event System.Action<Enemy> Die;
 
     private void Start()
     {
@@ -15,7 +17,16 @@ public class Enemy : MonoBehaviour
     {
         MoveToTarget();
         if (IsInTarget())
+        {
             SetTarget();
+        }
+    }
+
+    public void TakeDamage()
+#pragma warning restore SA1202 // Elements should be ordered by access
+    {
+            Die?.Invoke(this);
+            Destroy(gameObject);
     }
 
     private void MoveToTarget()
